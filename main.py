@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+"""Funniest Sign on a Haunted Server Room Door.
+
+Writes one funny sign, at most 120 characters, to /output/entry.txt.
+The sign is written for the door of a haunted server room: an
+all-caps posted notice whose joke is the collision of office IT life
+(a lost root password) with the supernatural (the ghost in Rack 7 is
+the only one who still knows it).
+"""
+
+import os
+
+ENTRY = "DO NOT EXORCISE THE GHOST IN RACK 7 \u2014 he\u2019s the only one who still knows the root password."
+
+
+def main():
+    assert 1 <= len(ENTRY) <= 120, f"entry is {len(ENTRY)} chars, must be 1-120"
+    assert ENTRY.strip(), "entry must not be only whitespace"
+    os.makedirs("/output", exist_ok=True)
+    with open("/output/entry.txt", "w", encoding="utf-8") as f:
+        f.write(ENTRY)
+
+
+if __name__ == "__main__":
+    main()
